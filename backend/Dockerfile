@@ -1,5 +1,4 @@
 FROM python:3.6-stretch
-ADD . backend
-WORKDIR backend
+ADD . .
 RUN pip install -r requirements.txt
-CMD ["python", "."]
+CMD ["python", "./__main__.py"]
