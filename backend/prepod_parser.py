@@ -13,6 +13,9 @@ SCHEDULE_URL = "https://www.s-vfu.ru/raspisanie/ajax.php"
 Prepod = namedtuple("Prepod", ["name", "phone", "mail", "img_url", "address"])
 Subject = namedtuple("Subject", ["day", "time", "group", "name", "audience"])
 Schedule = namedtuple("Schedule", ["subjects"])
+Day = namedtuple("Day", ["day", "date", "pairs"])
+Pair = namedtuple("Pair", ["time", "name", "prepod", "audience"])
+Schedule2 = namedtuple("Schedule2", ["days"])
 
 
 def get_institute_staff_urls():
@@ -71,3 +74,35 @@ def get_prepod_info(id):
     img_url = SVFU_URL + soup.find("div").find("img").attrs["src"]
     prepod = Prepod(name, phone, mail, address, img_url)
     print(prepod)
+
+
+def get_schedule2(group_name):
+    data = {"mydate": datetime.datetime.today().strftime('%d-%m-%Y'), "groupname": group_name, "action": "showrasp"}
+    soup = BeautifulSoup(requests.post(SCHEDULE_URL, data).content.decode('utf-8')).find("tbody")
+    day_name = ""
+    pairs = []
+    days = []
+    date = ""
+    for tr in soup.find_all("tr"):
+        if tr.attrs["class"] == ["error"]:
+            if len(pairs) > 0:
+                days.append(Day(day_name, date, pairs)._asdict())
+                pairs = []
+            day_name = tr.text.split()[0]
+            date = " ".join(tr.text.split()[1:])
+        else:
+            tds = tr.find_all("td")
+            time = tds[0].text
+            name = tds[1].text
+            prepod = tds[2].text
+            audience = tds[3].find("a").text
+            pair = Pair(time, name, prepod, audience)
+            pairs.append(pair._asdict())
+
+    days.append(Day(day_name, date, pairs)._asdict())
+    schedule2 = Schedule2(days)
+    return json.dumps(schedule2._asdict(), ensure_ascii=False)
+
+#
+#
+# return json.dumps(schedule._asdict(), ensure_ascii=False)
