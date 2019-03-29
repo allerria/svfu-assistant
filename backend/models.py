@@ -1,4 +1,5 @@
 from pony.orm import Database, Required, select, Optional
+import json
 
 db = Database()
 
@@ -12,5 +13,5 @@ class Prepod(db.Entity):
 
 
 def get_prepods(q):
-    prepods = select(prep for prep in Prepod if prep.name.startswith(q))[:].to_json()
-    return prepods
+    result = {"prepods": [p.to_dict() for p in Prepod.select(lambda p: q.lower() in p.name.lower())]}
+    return json.dumps(result)
