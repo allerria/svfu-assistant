@@ -1,3 +1,4 @@
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password by 'root';
 CREATE DATABASE IF NOT EXISTS svfu;
 USE svfu;
 CREATE TABLE IF NOT EXISTS prepods(
