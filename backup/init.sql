@@ -11,6 +11,9 @@ CREATE TABLE IF NOT EXISTS prepod(
   ,address VARCHAR(255)
   ,img_url VARCHAR(255)
 );
+
+ALTER TABLE prepod CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 INSERT INTO prepod(id,name,phone,mail,address,img_url) VALUES (601931007,'Владислав Дмитриевич Григорьев','+7 (4112) 49-68-34','vd.grigorev@s-vfu.ru','г. Якутск, ул. Кулаковского, 48, каб. 428','https://www.s-vfu.ru/upload/main/a4d/a4d4213e60cae7176a0d6f7e112d38e8.jpg');
 INSERT INTO prepod(id,name,phone,mail,address,img_url) VALUES (645669743,'Евдокия Саввична Баишева','+7 (4112) 49-67-65IP-телефон:89241743186','es.baisheva@s-vfu.ru, esbaisheva@mail.ru','г. Якутск, ул. Ойунского, 27, каб. 220','https://www.s-vfu.ru/upload/main/8ba/8ba8be109fd125dbcf37c7afd5f622f1.jpg');
 INSERT INTO prepod(id,name,phone,mail,address,img_url) VALUES (719179,'Светлана Васильевна Иванова','+7 (4112) 49-67-74','sva.ivanova@s-vfu.ru','г. Якутск, ул. Кулаковского, 42, каб. 326','https://www.s-vfu.ru/upload/main/47a/47afe6004804c6dd088e958ce51acab7.jpg');
