@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from backend import constants
+import constants
 from collections import namedtuple
 import datetime
 import json
