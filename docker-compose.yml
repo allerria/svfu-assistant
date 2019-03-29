@@ -12,7 +12,10 @@ services:
     image: mysql
     restart: always
     command: --default-authentication-plugin=mysql_native_password
-    mem_limit: 1800000000
+    deploy:
+      resources:
+        limits:
+          memory: 1800M
     volumes:
       - ./backup:/docker-entrypoint-initdb.d
     environment:
