@@ -4,11 +4,11 @@ USE svfu;
 
 CREATE TABLE IF NOT EXISTS prepods(
    id      INTEGER  NOT NULL PRIMARY KEY 
-  ,name    VARCHAR(38) NOT NULL
-  ,phone   VARCHAR(66)
-  ,mail    VARCHAR(60)
+  ,name    VARCHAR(70) NOT NULL
+  ,phone   VARCHAR(70)
+  ,mail    VARCHAR(70)
   ,address VARCHAR(88)
-  ,img_url VARCHAR(75)
+  ,img_url VARCHAR(80)
 );
 
 INSERT INTO prepods(id,name,phone,mail,address,img_url) VALUES (601931007,'Владислав Дмитриевич Григорьев','+7 (4112) 49-68-34','vd.grigorev@s-vfu.ru','г. Якутск, ул. Кулаковского, 48, каб. 428','https://www.s-vfu.ru/upload/main/a4d/a4d4213e60cae7176a0d6f7e112d38e8.jpg');
