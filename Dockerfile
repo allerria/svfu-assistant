@@ -1,5 +1,5 @@
 FROM python:3.6-stretch
-ADD . .
-WORKDIR .
+ADD . /svfu-assistant
+WORKDIR /svfu-assistant
 RUN pip install -r requirements.txt
 CMD ["python", "."]
