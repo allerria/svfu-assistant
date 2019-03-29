@@ -1,3 +1,5 @@
+SET NAMES utf8;
+
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password by 'root';
 CREATE DATABASE IF NOT EXISTS svfu CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE svfu;
