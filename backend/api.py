@@ -1,5 +1,5 @@
-from backend.models import *
-from backend.app import app
+from models import *
+from app import app
 from flask import request
 
 
