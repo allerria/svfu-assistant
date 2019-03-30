@@ -1,85 +1,23 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <div class="kek">
+      <mt-field label="Группа" placeholder="ИМИ-БА-ФИИТ-16" v-model="group">
+      </mt-field>
+      <mt-button type="default" @click.native="set_schedule" style="margin-right: 15px">ОК</mt-button>
+    </div>
+
+
+    <mt-index-list>
+      <mt-index-section :index="day.day + ' ' + day.date" v-for="day in schedule.days">
+        <div v-for="pair in day.pairs">
+          <mt-cell :title="pair.name"></mt-cell>
+          <mt-cell :title="pair.time"></mt-cell>
+          <mt-cell :title="pair.prepod"></mt-cell>
+          <mt-cell :title="pair.audience"></mt-cell>
+        </div>
+
+      </mt-index-section>
+    </mt-index-list>
   </div>
 </template>
 
@@ -88,29 +26,47 @@
     name: 'Schedule',
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        group: "ИМИ-БА-ФИИТ-16",
+        schedule: []
+      }
+    },
+    methods: {
+      set_schedule() {
+        fetch("http://ricardoflick.ru:5000/schedule2/" + this.group).then(resp => resp.json())
+          .then(json => {
+            console.log(json)
+            this.schedule = json
+          })
       }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
+<style>
+  .kek {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+  .mint-field {
+    width: 100%;
   }
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
+  .mint-indexlist-content {
+    height: 100% !important;
+    margin-right: 0 !important;
   }
 
-  a {
-    color: #42b983;
+  .mint-indexlist-navlist {
+    height: 100% !important;
+  }
+
+  .mint-indexlist-nav {
+    visibility: hidden;
+    position: relative;
+    n-bottom: 10px;
   }
 </style>

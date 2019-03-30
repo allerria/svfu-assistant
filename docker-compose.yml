@@ -19,3 +19,10 @@ services:
       - MYSQL_ROOT_HOST=%
     ports:
       - "3306:3306"
+  front:
+    image: nginx
+    volumes:
+      - /front/dist:/opt/www
+    restart: on-failure
+    ports:
+      - "80:80"

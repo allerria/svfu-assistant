@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Schedule from '@/components/Schedule'
 import SearchPrepod from '@/components/SearchPrepod'
 import SearchPrepodByPhoto from '@/components/SearchPrepodByPhoto';
+import Prepod from '@/components/Prepod';
 
 Vue.use(Router)
 
@@ -24,9 +25,9 @@ export default new Router({
       component: SearchPrepodByPhoto
     },
     {
-      path: '/prepod',
-      name: 'SearchPrepodByPhoto',
-      component: SearchPrepodByPhoto
+      path: '/prepod/:id',
+      name: 'Prepod',
+      component: Prepod
     },
   ]
 })

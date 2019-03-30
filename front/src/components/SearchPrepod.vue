@@ -5,8 +5,9 @@
       <mt-cell
         v-for="item in result2"
         :title="item.name">
-
-          <img slot="icon" v-lazy="item.img_url" width="100%">
+        <a @click="pushTo(item.id)">
+          <img slot="icon" :src="item.img_url" style="width: 100%">
+        </a>
 
       </mt-cell>
     </mt-search>
@@ -22,6 +23,11 @@
         result2: []
       };
     },
+    methods: {
+      pushTo(id) {
+        this.$router.push({"name": "Prepod", params: {"id": id}})
+      }
+    },
     computed: {
       // a computed getter
       result() {
@@ -30,7 +36,7 @@
           this.result2 = []
           return []
         }
-        fetch('http://localhost:5000/search?q=' + this.value).then(resp => resp.json())
+        fetch('http://ricardoflick.ru:5000/search?q=' + this.value).then(resp => resp.json())
           .then(json => {
             this.result2 = json.prepods
             return json.prepods

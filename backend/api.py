@@ -12,6 +12,13 @@ def search_prepod():
     return prepods
 
 
+@app.route("/prepod/<id>")
+def get_prepodd(id):
+    prepod = get_prepod(id)
+    print(prepod)
+    return prepod
+
+
 @app.route("/schedule/<id>")
 def get_schedule_prep(id):
     return get_prepod_schedule(id)
