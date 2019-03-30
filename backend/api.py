@@ -1,7 +1,7 @@
 from models import *
 from app import app
 from prepod_parser import get_prepod_schedule, get_schedule2
-from flask import request, jsonify
+from flask import request
 
 
 @app.route("/search")
