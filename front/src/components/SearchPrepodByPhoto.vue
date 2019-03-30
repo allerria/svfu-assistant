@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form action="http://localhost:5005/recognize" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:5001/recognize" method="post" enctype="multipart/form-data">
       <input type="file" name="file" accept="image/*">
       <input type="submit">
     </form>
