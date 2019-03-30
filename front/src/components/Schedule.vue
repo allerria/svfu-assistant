@@ -26,7 +26,7 @@
     name: 'Schedule',
     data() {
       return {
-        group: "ИМИ-БА-ФИИТ-16",
+        group: "",
         schedule: []
       }
     },
