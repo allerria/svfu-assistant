@@ -20,9 +20,8 @@ services:
     ports:
       - "3306:3306"
   front:
-    image: nginx
-    volumes:
-      - ./front/dist/:/usr/share/nginx/html
+    build:
+      context: ./front
     restart: on-failure
     ports:
       - "80:80"
