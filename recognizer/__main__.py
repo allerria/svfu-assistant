@@ -9,7 +9,8 @@ prepods_with_embeddings = pd.read_csv("prepods_with_photo2.csv")
 
 def recognize(img):
     embedding = np.array([face_recognition.face_encodings(img)[0]])
-    print(prepods_with_embeddings.ix[np.argmin(np.linalg.norm(prepods_with_embeddings.ix[:, 7:] - embedding)), :7])
+    print([map(lambda p: np.sum(np.square(p - embedding)), prepods_with_embeddings.ix[:, 7:])])
+    return " "
 
 
 app = Flask(__name__)
@@ -26,4 +27,4 @@ def get_recognize():
     return ""
 
 
-app.run(host="0.0.0.0", port=5001)
+app.run(host="0.0.0.0", port=5005)
