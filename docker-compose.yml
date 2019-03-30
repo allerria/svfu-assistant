@@ -8,6 +8,13 @@ services:
     ports:
       - "5000:5000"
 
+  recognizer:
+    build:
+      context: ./recognizer
+    restart: always
+    ports:
+      - "5001:5001"
+
   db:
     image: mysql
     restart: always
