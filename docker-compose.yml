@@ -22,7 +22,7 @@ services:
   front:
     image: nginx
     volumes:
-      - /front/dist:/opt/www
+      - ./front/dist:/opt/www
     restart: on-failure
     ports:
       - "80:80"
