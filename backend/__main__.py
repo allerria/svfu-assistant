@@ -1,8 +1,4 @@
 from api import *
-import face_recognition
-import numpy as np
-import pandas as pd
-import cv2
 
 
 @app.after_request
@@ -11,6 +7,8 @@ def after_request(response):
     response.headers.add("Access-Control-Allow-Methods", "*")
     response.headers.add("Access-Control-Allow-Headers", "*")
     return response
+
+
 #
 # with open("prepods_with_photo2.csv", "r") as f:
 #     print(f.read())
