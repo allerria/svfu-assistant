@@ -2,7 +2,7 @@ FROM python:3.6-stretch
 ADD . .
 # install gcc and g++ so that liblpclassifier_cv32 can utilize the library
 RUN echo 'deb http://deb.debian.org/debian/ sid main' >> /etc/apt/sources.list
-RUN add-apt-repository ppa:jonathonf/gcc-7.1
+RUN apt-get install software-properties-common && add-apt-repository ppa:jonathonf/gcc-7.1
 RUN apt-get update
 RUN apt-get install gcc-7 g++-7
 RUN apt-get remove -y cmake
