@@ -1,9 +1,8 @@
 from api import *
-import functools as ft
 import face_recognition
 import numpy as np
 import pandas as pd
-import cv2
+import cv2  
 
 
 @app.after_request
@@ -13,14 +12,13 @@ def after_request(response):
     response.headers.add("Access-Control-Allow-Headers", "*")
     return response
 
+with open("prepods_with_photo2.csv", "r") as f:
+    print(f.read())
 
-@ft.lru_cache(None)
-def lazy():
-    return pd.read_csv("prepods_with_photo2.csv")
+prepods_with_embeddings = pd.read_csv("prepods_with_photo2.csv")
 
 
 def recognize(img):
-    prepods_with_embeddings = lazy()
     embedding = np.array([face_recognition.face_encodings(img)[0]])
     print(prepods_with_embeddings.ix[np.argmin(np.linalg.norm(prepods_with_embeddings.ix[:, 7:] - embedding)), :7])
 
