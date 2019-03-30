@@ -3,7 +3,6 @@ beautifulsoup4==4.6.3
 flask==1.0.2
 pymysql==0.9.3
 pony==0.7.9
-cmake
 face_recognition
 pandas
 matplotlib
